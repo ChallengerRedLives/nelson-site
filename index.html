@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Nelson Solution — IT Support & Microsoft 365 in Alamogordo, NM</title>
+<meta name="description" content="Break/fix computer repair and Microsoft 365 setup for small businesses in Alamogordo and Otero County. No contracts, no jargon. You reach out, it gets fixed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16283a;
+  --ink-soft:#3c4f63;
+  --paper:#f5f7f8;
+  --card:#ffffff;
+  --steel:#2c6e9b;
+  --steel-dark:#1f5679;
+  --amber:#e8a33d;
+  --line:#d6dce0;
+  --ok:#3fa36c;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Archivo",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px}
+a{color:var(--steel-dark)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+/* status strip */
+.status{background:var(--ink);color:#c9d6e2;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em}
+.status .wrap{display:flex;gap:24px;align-items:center;padding:8px 24px;flex-wrap:wrap}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:7px;vertical-align:1px}
+.status a{color:#fff;text-decoration:none}
+.status a:hover{text-decoration:underline}
+.status .right{margin-left:auto}
+
+/* nav */
+nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+.brand{font-family:var(--display);font-weight:800;font-size:21px;text-decoration:none;color:var(--ink);letter-spacing:-.01em}
+.brand span{color:var(--steel)}
+.nav-cta{font-family:var(--body);font-weight:600;font-size:15px;background:var(--steel);color:#fff;text-decoration:none;padding:10px 18px;border-radius:6px}
+.nav-cta:hover{background:var(--steel-dark)}
+
+/* hero */
+.hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel-dark);margin-bottom:16px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,5.2vw,58px);line-height:1.04;letter-spacing:-.02em;margin-bottom:20px}
+h1 em{font-style:normal;color:var(--steel)}
+.hero p.lede{font-size:19px;color:var(--ink-soft);max-width:44ch;margin-bottom:30px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;font-weight:600;font-size:16px;text-decoration:none;padding:14px 24px;border-radius:6px}
+.btn-primary{background:var(--steel);color:#fff}
+.btn-primary:hover{background:var(--steel-dark)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+
+/* work order ticket */
+.ticket{background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 30px rgba(22,40,58,.10);overflow:hidden;transform:rotate(1.2deg)}
+.ticket-head{background:var(--ink);color:#fff;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;padding:10px 18px;display:flex;justify-content:space-between}
+.ticket-head b{color:var(--amber);font-weight:500}
+.ticket-body{padding:22px 20px 10px;font-family:var(--mono);font-size:13.5px}
+.ticket-body .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.ticket-body .row:last-child{border-bottom:none}
+.ticket-body .k{color:var(--ink-soft)}
+.ticket-body .v{font-weight:500;text-align:right}
+.ticket-foot{border-top:2px dashed var(--line);padding:12px 20px 16px;font-family:var(--mono);font-size:12.5px;color:var(--ok);font-weight:500}
+
+/* sections */
+section{padding:72px 0}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel-dark);margin-bottom:12px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,38px);letter-spacing:-.015em;margin-bottom:14px}
+.section-lede{color:var(--ink-soft);max-width:58ch;margin-bottom:44px}
+
+/* service cards */
+.services{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:34px 30px;position:relative}
+.svc::before{content:"";position:absolute;top:0;left:30px;right:30px;height:4px;background:var(--steel);border-radius:0 0 4px 4px}
+.svc.amber::before{background:var(--amber)}
+.svc h3{font-family:var(--display);font-weight:600;font-size:24px;margin-bottom:12px}
+.svc p{color:var(--ink-soft);margin-bottom:18px}
+.svc ul{list-style:none}
+.svc li{padding:9px 0 9px 26px;border-top:1px solid var(--line);position:relative;font-size:15.5px}
+.svc li::before{content:"→";position:absolute;left:0;color:var(--steel);font-weight:600}
+.svc.amber li::before{color:var(--amber)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:step}
+.step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:28px 24px}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--mono);font-size:14px;color:var(--steel-dark);display:block;margin-bottom:12px}
+.step h3{font-family:var(--display);font-weight:600;font-size:19px;margin-bottom:8px}
+.step p{color:var(--ink-soft);font-size:15.5px}
+
+/* local band */
+.local{background:var(--ink);color:#e8eef3}
+.local h2{color:#fff}
+.local p{color:#b9c8d5;max-width:62ch}
+.local .wrap{display:grid;grid-template-columns:1fr;gap:8px}
+.local .tagline{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.contact-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px}
+.contact-card h3{font-family:var(--display);font-weight:600;font-size:20px;margin-bottom:8px}
+.contact-card p{color:var(--ink-soft);font-size:15.5px;margin-bottom:14px}
+.contact-card .big{font-family:var(--display);font-weight:800;font-size:26px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.contact-card .big:hover{color:var(--steel)}
+
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:14px;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer .mono{font-family:var(--mono);font-size:12.5px}
+
+@media(max-width:840px){
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .ticket{transform:none;max-width:460px}
+  .services,.steps,.contact-grid{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .status .right{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="status">
+  <div class="wrap">
+    <span><span class="dot"></span>TAKING NEW CLIENTS</span>
+    <span>ON-SITE: OTERO COUNTY, NM · MICROSOFT 365: NATIONWIDE</span>
+    <a class="right" href="mailto:support@thenelsonsolution.com">support@thenelsonsolution.com</a>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">The Nelson <span>Solution</span></a>
+    <a class="nav-cta" href="mailto:support@thenelsonsolution.com">Email us</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Small-business IT · Break/Fix · Microsoft 365</p>
+      <h1>Computer trouble? <em>You reach out, it gets fixed.</em></h1>
+      <p class="lede">The Nelson Solution is IT support for small businesses — hands-on break/fix service in Alamogordo and Otero County, and Microsoft 365 email and licensing for businesses anywhere in the US. Plain English, honest pricing, no waiting on hold.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:support@thenelsonsolution.com">Email support@thenelsonsolution.com</a>
+      </div>
+    </div>
+    <div class="ticket" aria-hidden="true">
+      <div class="ticket-head"><span>WORK ORDER</span><b>#00214</b></div>
+      <div class="ticket-body">
+        <div class="row"><span class="k">CLIENT</span><span class="v">Local office</span></div>
+        <div class="row"><span class="k">ISSUE</span><span class="v">Front-desk PC won't boot</span></div>
+        <div class="row"><span class="k">REPORTED</span><span class="v">Tue, 1:20 PM</span></div>
+        <div class="row"><span class="k">ON SITE</span><span class="v">Tue, 5:45 PM</span></div>
+        <div class="row"><span class="k">RESOLVED</span><span class="v">Tue, 7:10 PM</span></div>
+      </div>
+      <div class="ticket-foot">✓ CLOSED — SAME EVENING</div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <p class="eyebrow">What we do</p>
+    <h2>Two things, done right.</h2>
+    <p class="section-lede">We keep the offering simple on purpose. If your problem doesn't fit either box, email us anyway — if we can't fix it, we'll tell you who can.</p>
+    <div class="services">
+      <div class="svc">
+        <h3>Break/Fix IT Support</h3>
+        <p>Something's broken and work has stopped. We come to you, find the problem, and fix it. No contract, no retainer — you pay for the work.</p>
+        <ul>
+          <li>PCs, laptops, and printers that won't behave</li>
+          <li>Wi-Fi, network, and internet problems</li>
+          <li>Office and back-office machines</li>
+          <li>Virus and malware cleanup</li>
+          <li>Backups that actually run — set up and verified</li>
+        </ul>
+      </div>
+      <div class="svc amber">
+        <h3>Microsoft 365</h3>
+        <p>Professional email on your own domain — <strong>you@yourbusiness.com</strong>, not @gmail.com — plus Word, Excel, Teams, and cloud files. Simple monthly or annual subscriptions, set up and supported by us.</p>
+        <ul>
+          <li>Business email on the domain you already own</li>
+          <li>Migration from Gmail or old providers — nothing lost</li>
+          <li>Spam and spoofing protection (SPF, DKIM, DMARC)</li>
+          <li>Licensing handled for you as a Microsoft partner</li>
+          <li>Setup on your phones, PCs, and tablets</li>
+          <li>Fully remote setup and support — available nationwide</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>No tickets portals. No runaround.</h2>
+    <p class="section-lede">This is the whole process. It hasn't changed since people started fixing things for other people.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>You email us</h3>
+        <p>Describe the problem in your own words. "The internet is down" is a perfectly good description.</p>
+      </div>
+      <div class="step">
+        <h3>We fix it</h3>
+        <p>Remotely when possible, on site when it's not. We explain what happened in plain English.</p>
+      </div>
+      <div class="step">
+        <h3>You get back to work</h3>
+        <p>Straightforward pricing, agreed before the work starts. No surprise invoices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="local">
+  <div class="wrap">
+    <p class="tagline">Local roots, remote reach</p>
+    <h2>Based in Alamogordo. Not limited to it.</h2>
+    <p>For break/fix work, we serve restaurants, shops, offices, and home businesses across Alamogordo, La Luz, Tularosa, and the rest of Otero County — on site when you need it, typically same evening or next day. For Microsoft 365, geography doesn't matter: email migration, licensing, and support are handled entirely remotely, so we take 365 clients anywhere in the country. Either way, you talk to the person who actually does the work.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Got a problem? Let's hear it.</h2>
+    <p class="section-lede">Email any time — we reply within one business day, and on-site visits are scheduled for evenings and weekends when your business can spare the machine.</p>
+    <div class="contact-grid" style="grid-template-columns:1fr">
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p>Broken machines, Microsoft 365 quotes, migration questions, or "can you take a look at this sometime" — all of it goes here. Include your business name and the best time to reach you, and we'll get back to you promptly.</p>
+        <a class="big" href="mailto:support@thenelsonsolution.com">support@thenelsonsolution.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 The Nelson Solution LLC · Alamogordo, New Mexico</span>
+    <span class="mono">MICROSOFT CSP PARTNER</span>
+  </div>
+</footer>
+
+</body>
+</html>
